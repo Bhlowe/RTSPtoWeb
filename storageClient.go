@@ -60,3 +60,27 @@ func (obj *StorageST) ClientHas(streamID string, channelID string) bool {
 	}
 	return true
 }
+
+// ClientList returns list of all Clients (viewers)
+func (obj *StorageST) ClientList() map[string]ClientInfoST {
+	obj.mutex.RLock()
+	defer obj.mutex.RUnlock()
+	tmp := make(map[string]ClientInfoST)
+	for streamID, stream := range obj.Streams {
+		for chanID, channel := range stream.Channels {
+			for clientID, client := range channel.clients {
+				var info ClientInfoST
+				info.ClientId = clientID
+				info.StreamId = streamID
+				info.Channel = chanID
+				info.Mode = client.mode
+				tmp[clientID] = info
+			}
+		}
+	}
+
+	// TODO:
+	// Add HLS clients.
+
+	return tmp
+}

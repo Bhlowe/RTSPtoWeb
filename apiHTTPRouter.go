@@ -69,6 +69,10 @@ func HTTPAPIServer() {
 	privat.GET("/stream/:uuid/reload", HTTPAPIServerStreamReload)
 	privat.GET("/stream/:uuid/info", HTTPAPIServerStreamInfo)
 
+	// BHL
+	privat.GET("/clients", HTTPAPIServerClients)
+	// privat.GET("/clients/delete/:uuid", HTTPAPIServerDeleteClient)
+
 	/*
 		Streams Multi Control elements
 	*/
@@ -161,6 +165,7 @@ func HTTPAPIServerIndex(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
 		"port":    Storage.ServerHTTPPort(),
 		"streams": Storage.Streams,
+		"clients": Storage.ClientList(),
 		"version": time.Now().String(),
 		"page":    "index",
 	})

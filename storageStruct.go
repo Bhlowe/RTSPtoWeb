@@ -106,6 +106,15 @@ type ClientST struct {
 	socket            net.Conn
 }
 
+// ClientInfo .. Keep separate or merge into ClientST?
+type ClientInfoST struct {
+	ClientId string `json:"id,omitempty" `
+	StreamId string `json:"stream,omitempty" groups:"api,config"`
+	Channel  string `json:"channel,omitempty" groups:"api,config"`
+	Start    int    `json:"start,omitempty" groups:"api,config"`
+	Mode     int    `json:"mode,omitempty" groups:"api,config"`
+}
+
 //SegmentOld HLS cache section
 type SegmentOld struct {
 	dur  time.Duration

@@ -10,6 +10,11 @@ func HTTPAPIServerStreams(c *gin.Context) {
 	c.IndentedJSON(200, Message{Status: 1, Payload: Storage.StreamsList()})
 }
 
+//HTTPAPIServerStreams function return client map
+func HTTPAPIServerClients(c *gin.Context) {
+	c.IndentedJSON(200, Message{Status: 1, Payload: Storage.ClientList()})
+}
+
 //HTTPAPIServerStreamsMultiControlAdd function add new stream's
 func HTTPAPIServerStreamsMultiControlAdd(c *gin.Context) {
 	requestLogger := log.WithFields(logrus.Fields{
