@@ -6,6 +6,8 @@ Need to list all ports used so that they can be exposed in Dockerfile.
 
 What is your token system (CheckTokenAccess) Need to understand if it is the same as my requirement.
 
+How to automatically determine which streaming type to use for each browser?
+
 
 ## ClientList
 Get List of clients viewing streams. It has been partially implemented in bhlowe fork.
@@ -50,8 +52,7 @@ Accessing a stream would via http or web socket would need a new parameter
 
 
 
-## Other ideas
+## Other Suggestions
 Make all API calls start with /api/ 
 Makes routing via reverse proxy easier
-
 
