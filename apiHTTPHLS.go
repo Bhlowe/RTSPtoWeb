@@ -25,6 +25,9 @@ func HTTPAPIServerStreamHLSM3U8(c *gin.Context) {
 		}).Errorln(ErrorStreamNotFound.Error())
 		return
 	}
+	// BHL, get or create clientInfoRecord
+	// Fail if unable to get.
+
 	c.Header("Content-Type", "application/x-mpegURL")
 	Storage.StreamChannelRun(c.Param("uuid"), c.Param("channel"))
 	//If stream mode on_demand need wait ready segment's
@@ -38,6 +41,7 @@ func HTTPAPIServerStreamHLSM3U8(c *gin.Context) {
 			return
 		}
 		if seq >= 6 {
+
 			_, err := c.Writer.Write([]byte(index))
 			if err != nil {
 				c.IndentedJSON(400, Message{Status: 0, Payload: err.Error()})
@@ -46,6 +50,7 @@ func HTTPAPIServerStreamHLSM3U8(c *gin.Context) {
 				}).Errorln(err.Error())
 				return
 			}
+			// increment bytes sent in clientInfoRecord.bytes
 			return
 		}
 		time.Sleep(1 * time.Second)

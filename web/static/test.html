@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<script src="js/RtspToWeb.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<!--
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/adminlte.min.js"></script>
+<script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="js/index.js"></script>
+-->
+
+
+<video id="videoPlayer" autoplay controls muted playsinline></video>
+
+
+<script>
+    let webrtc, webrtcSendChannel;
+
+    $(document).ready(() => {
+        startPlay();
+    });
+
+    function startPlay() {
+        webrtc = new RTCPeerConnection({
+            iceServers: [{
+                urls: ["stun:stun.l.google.com:19302"]
+            }],
+            sdpSemantics: "unified-plan"
+        });
+        webrtc.onnegotiationneeded = handleNegotiationNeeded;
+        webrtc.ontrack = function (event) {
+            console.log(event.streams.length + ' track is delivered');
+            $("#videoPlayer")[0].srcObject = event.streams[0];
+            $("#videoPlayer")[0].play();
+        }
+        webrtc.addTransceiver('video', {
+            'direction': 'sendrecv'
+        });
+        webrtcSendChannel = webrtc.createDataChannel('foo');
+        // webrtc.addTransceiver('video', {
+        //   'direction': 'sendrecv'
+        // });
+        webrtcSendChannel.onclose = () => {
+            startPlay();
+            console.log('sendChannel has closed');
+        }
+        webrtcSendChannel.onopen = () => {
+            console.log('sendChannel has opened');
+            webrtcSendChannel.send('ping');
+            webrtcSendChannelInterval = setInterval(() => {
+                webrtcSendChannel.send('ping');
+            }, 1000)
+        }
+
+        webrtcSendChannel.onmessage = e => console.log(e.data);
+
+    }
+
+    async function handleNegotiationNeeded() {
+        let stream_id = 'tower';
+        let channel = '0';
+        let url = "/stream/" + stream_id + "/channel/" + channel + "/webrtc?uuid=" + stream_id + '&channel=' + channel + "&cid=1234";
+        let offer = await webrtc.createOffer();
+
+        await webrtc.setLocalDescription(offer);
+        $.post(url, {
+            data: btoa(webrtc.localDescription.sdp)
+        }, function (data) {
+            try {
+                console.log(data);
+                webrtc.setRemoteDescription(new RTCSessionDescription({
+                    type: 'answer',
+                    sdp: atob(data)
+                }))
+            } catch (e) {
+                console.warn(e);
+            }
+
+        });
+    }
+
+    $("#videoPlayer")[0].addEventListener('loadeddata', () => {
+        $("#videoPlayer")[0].play();
+    });
+
+    $("#videoPlayer")[0].addEventListener('error', () => {
+        console.log('video_error')
+    });
+</script>
+</body>
+</html>

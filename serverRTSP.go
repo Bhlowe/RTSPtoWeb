@@ -331,7 +331,8 @@ func RTSPServerClientHandle(conn net.Conn) {
 
 //handleRTSPServerPlay func
 func RTSPServerClientPlay(uuid string, channel string, conn net.Conn) {
-	cid, _, ch, err := Storage.ClientAdd(uuid, channel, RTSP)
+	// TODO: add valid cid.
+	cid, _, ch, err := Storage.ClientAdd(uuid, channel, "12345", RTSP)
 	if err != nil {
 		log.WithFields(logrus.Fields{
 			"module":  "rtsp_server",

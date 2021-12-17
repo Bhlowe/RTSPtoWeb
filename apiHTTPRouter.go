@@ -71,7 +71,7 @@ func HTTPAPIServer() {
 
 	// BHL
 	privat.GET("/clients", HTTPAPIServerClients)
-	// privat.GET("/clients/delete/:uuid", HTTPAPIServerDeleteClient)
+	privat.GET("/clients/delete/:uuid", HTTPAPIServerDeleteClient)
 
 	/*
 		Streams Multi Control elements

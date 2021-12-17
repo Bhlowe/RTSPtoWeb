@@ -38,7 +38,7 @@ func HTTPAPIServerStreamMSE(ws *websocket.Conn) {
 		}).Errorln(err.Error())
 		return
 	}
-	cid, ch, _, err := Storage.ClientAdd(ws.Request().FormValue("uuid"), ws.Request().FormValue("channel"), MSE)
+	cid, ch, _, err := Storage.ClientAdd(ws.Request().FormValue("uuid"), ws.Request().FormValue("channel"), ws.Request().FormValue("cid"), MSE)
 	if err != nil {
 		requestLogger.WithFields(logrus.Fields{
 			"call": "ClientAdd",

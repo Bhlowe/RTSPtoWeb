@@ -1,24 +1,26 @@
-{{template "head.tmpl" .}}
-<div class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Play hls video</h1>
-      </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item active">Play hls video</li>
-        </ol>
-      </div>
-    </div>
-  </div><!-- /.container-fluid -->
-</div>
-<div class="content">
-  {{template "player.tmpl" .}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<script src="js/RtspToWeb.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<!--
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/adminlte.min.js"></script>
+<script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="js/index.js"></script>
+-->
 
-  {{template "foot.tmpl" .}}
-  </div>
+
+<video id="videoPlayer" autoplay controls muted playsinline></video>
+
+
   <script src="/../static/plugins/hlsjs/hls.min.js"></script>
 <script>
 
@@ -26,9 +28,9 @@
     startPlay();
   });
   function startPlay(){
-	let uuid = 'tower';
-	let channel = '0';
-    let url ='/stream/' + uuid + '/channel/'+channel+'/hls/live/index.m3u8';
+    let uuid='tower';
+    let channel='0';	// $('#channel').val();
+    let url ='/stream/' + uuid + '/channel/'+channel+'/hls/live/index.m3u8?cid=1234';
     if ($("#videoPlayer")[0].canPlayType('application/vnd.apple.mpegurl')) {
         $("#videoPlayer")[0].src = url;
         $("#videoPlayer")[0].load();
@@ -40,8 +42,11 @@
           console.log(e);
         })
     } else {
-	alert('No support for HLS');
-	
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Your browser don`t support hls '
+          });
     }
 
   }
@@ -62,14 +67,15 @@
 
   $("#videoPlayer")[0].addEventListener('loadeddata', () => {
     $("#videoPlayer")[0].play();
-    makePic();
   });
 
-  // $("#videoPlayer")[0].addEventListener('error', () => {
-  //   console.log('video_error')
-  // });
+
   $("#videoPlayer")[0].onerror = function() {
     console.log("Error " + $("#videoPlayer")[0].error.code + "; details: " + $("#videoPlayer")[0].error.message);
   }
 
 </script>
+
+
+</body>
+</html>

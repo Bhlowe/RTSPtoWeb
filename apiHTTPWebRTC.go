@@ -14,6 +14,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		"module":  "http_webrtc",
 		"stream":  c.Param("uuid"),
 		"channel": c.Param("channel"),
+		"cid":     c.Param("cid"),
 		"func":    "HTTPAPIServerStreamWebRTC",
 	})
 
@@ -33,6 +34,10 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		}).Errorln(err.Error())
 		return
 	}
+	// TODO: Check for client_id;
+	// clientInfo := clientManager.getClientInfo(c.Param("cid"));
+	// if err != nil { return 500 Message
+
 	muxerWebRTC := webrtc.NewMuxer(webrtc.Options{})
 	answer, err := muxerWebRTC.WriteHeader(codecs, c.PostForm("data"))
 	if err != nil {
@@ -51,7 +56,12 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		return
 	}
 	go func() {
-		cid, ch, _, err := Storage.ClientAdd(c.Param("uuid"), c.Param("channel"), WEBRTC)
+
+		// TODO BHL; Check for client_id;
+		// clientInfo := clientManager.getClientInfo(c.Param("cid"));
+		// if err != nil { return 500 Message
+
+		cid, ch, _, err := Storage.ClientAdd(c.Param("uuid"), c.Param("channel"), c.Param("cid"), WEBRTC)
 		if err != nil {
 			c.IndentedJSON(400, Message{Status: 0, Payload: err.Error()})
 			requestLogger.WithFields(logrus.Fields{
@@ -85,6 +95,11 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 					}).Errorln(err.Error())
 					return
 				}
+
+				// TODO BHL
+				// err = clientManager.logPackets(cid, pck.length)
+				// if (err) log error and return;
+
 			}
 		}
 	}()

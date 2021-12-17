@@ -40,6 +40,7 @@ var (
 	ErrorStreamChannelNotFound      = errors.New("stream channel not found")
 	ErrorStreamChannelCodecNotFound = errors.New("stream channel codec not ready, possible stream offline")
 	ErrorStreamsLen0                = errors.New("streams len zero")
+	ErrorClientNotAuthorized        = errors.New("client not authorized")
 )
 
 //StorageST main storage struct
@@ -113,6 +114,7 @@ type ClientInfoST struct {
 	Channel  string `json:"channel,omitempty" groups:"api,config"`
 	Start    int    `json:"start,omitempty" groups:"api,config"`
 	Mode     int    `json:"mode,omitempty" groups:"api,config"`
+	Bytes    int    `json:"bytes,omitempty" groups:"api,config"`
 }
 
 //SegmentOld HLS cache section
