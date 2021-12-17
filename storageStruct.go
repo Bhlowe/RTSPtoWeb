@@ -48,6 +48,7 @@ type StorageST struct {
 	mutex   sync.RWMutex
 	Server  ServerST            `json:"server" groups:"api,config"`
 	Streams map[string]StreamST `json:"streams,omitempty" groups:"api,config"`
+	Clients ClientInfoMapST     // added BHL
 }
 
 //ServerST server storage section
@@ -115,6 +116,13 @@ type ClientInfoST struct {
 	Start    int    `json:"start,omitempty" groups:"api,config"`
 	Mode     int    `json:"mode,omitempty" groups:"api,config"`
 	Bytes    int    `json:"bytes,omitempty" groups:"api,config"`
+	LastTime int    `json:"last_time,omitempty" groups:"api,config"`
+}
+
+//Map of ClientInfo records.
+type ClientInfoMapST struct {
+	mutex         sync.RWMutex
+	ClientInfoMap map[string]ClientInfoST
 }
 
 //SegmentOld HLS cache section

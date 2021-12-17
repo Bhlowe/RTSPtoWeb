@@ -169,6 +169,7 @@ func RTSPServer() {
 func RTSPServerClientHandle(conn net.Conn) {
 	buf := make([]byte, 4096)
 	uuid, channel, in, cSEQ := "", "0", 0, 0
+
 	var playStarted bool
 	defer func() {
 		err := conn.Close()
@@ -331,8 +332,14 @@ func RTSPServerClientHandle(conn net.Conn) {
 
 //handleRTSPServerPlay func
 func RTSPServerClientPlay(uuid string, channel string, conn net.Conn) {
-	// TODO: add valid cid.
-	cid, _, ch, err := Storage.ClientAdd(uuid, channel, "12345", RTSP)
+
+	info, err2 := Storage.Clients.checkOrCreateCID(uuid, channel, "", RTSP)
+	if err2 != nil {
+		// TODO Log it and handle the if error better.
+		return
+	}
+
+	cid, _, ch, err := Storage.ClientAdd(info)
 	if err != nil {
 		log.WithFields(logrus.Fields{
 			"module":  "rtsp_server",
@@ -344,6 +351,8 @@ func RTSPServerClientPlay(uuid string, channel string, conn net.Conn) {
 		return
 	}
 	defer func() {
+
+		Storage.Clients.removeClient(cid)
 		Storage.ClientDelete(uuid, cid, channel)
 		log.WithFields(logrus.Fields{
 			"module":  "rtsp_server",
@@ -383,6 +392,10 @@ func RTSPServerClientPlay(uuid string, channel string, conn net.Conn) {
 				}).Errorln(err.Error())
 				return
 			}
+
+			// TODO: Get Length of Packet!
+			Storage.Clients.logPackets(cid, 512)
+
 		}
 	}
 }

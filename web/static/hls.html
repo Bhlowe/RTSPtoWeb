@@ -21,58 +21,65 @@
 <video id="videoPlayer" autoplay controls muted playsinline></video>
 
 
-  <script src="/../static/plugins/hlsjs/hls.min.js"></script>
+<script src="/../static/plugins/hlsjs/hls.min.js"></script>
 <script>
 
-  $(document).ready(()=>{
-    startPlay();
-  });
-  function startPlay(){
-    let uuid='tower';
-    let channel='0';	// $('#channel').val();
-    let url ='/stream/' + uuid + '/channel/'+channel+'/hls/live/index.m3u8?cid=1234';
-    if ($("#videoPlayer")[0].canPlayType('application/vnd.apple.mpegurl')) {
-        $("#videoPlayer")[0].src = url;
-        $("#videoPlayer")[0].load();
-    } else if (Hls.isSupported()) {
-        let hls=new Hls({manifestLoadingTimeOut:60000});
-        hls.loadSource(url);
-        hls.attachMedia($("#videoPlayer")[0]);
-        hls.on('error', function(e) {
-          console.log(e);
-        })
-    } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Your browser don`t support hls '
-          });
+    $(document).ready(() => {
+        startPlay();
+    });
+
+
+
+    function startPlay() {
+        let uuid = 'tower';
+        let cid = '' + Math.random();
+
+
+        let channel = '0';	// $('#channel').val();
+        let url = '/stream/' + uuid + '/channel/' + channel + '/hls/live/index.m3u8?cid=' + cid;
+        if ($("#videoPlayer")[0].canPlayType('application/vnd.apple.mpegurl')) {
+            $("#videoPlayer")[0].src = url;
+            $("#videoPlayer")[0].load();
+        } else if (Hls.isSupported()) {
+            let hls = new Hls({manifestLoadingTimeOut: 60000});
+            hls.loadSource(url);
+            hls.attachMedia($("#videoPlayer")[0]);
+            hls.on('error', function (e) {
+                console.log(e);
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Your browser don`t support hls '
+            });
+        }
+
     }
 
-  }
-  let canplaythroughTime=null;//time when  buffer have enaugh to play
+    let canplaythroughTime = null;//time when  buffer have enaugh to play
 
-  $("#videoPlayer")[0].addEventListener('progress', () => {
-  if (typeof document.hidden !== "undefined" && document.hidden && canplaythroughTime!=null) {
-      //no sound, browser paused video without sound in background
-      $("#videoPlayer")[0].currentTime = $("#videoPlayer")[0].buffered.end(($("#videoPlayer")[0].buffered.length - 1)) - canplaythroughTime;
-  }
-  });
+    $("#videoPlayer")[0].addEventListener('progress', () => {
+        if (typeof document.hidden !== "undefined" && document.hidden && canplaythroughTime != null) {
+            //no sound, browser paused video without sound in background
+            $("#videoPlayer")[0].currentTime = $("#videoPlayer")[0].buffered.end(($("#videoPlayer")[0].buffered.length - 1)) - canplaythroughTime;
+        }
+    });
 
-  $("#videoPlayer")[0].addEventListener('canplaythrough', () => {
-    if(canplaythroughTime==null){
-      canplaythroughTime=$("#videoPlayer")[0].buffered.end(($("#videoPlayer")[0].buffered.length - 1));
+    $("#videoPlayer")[0].addEventListener('canplaythrough', () => {
+        if (canplaythroughTime == null) {
+            canplaythroughTime = $("#videoPlayer")[0].buffered.end(($("#videoPlayer")[0].buffered.length - 1));
+        }
+    });
+
+    $("#videoPlayer")[0].addEventListener('loadeddata', () => {
+        $("#videoPlayer")[0].play();
+    });
+
+
+    $("#videoPlayer")[0].onerror = function () {
+        console.log("Error " + $("#videoPlayer")[0].error.code + "; details: " + $("#videoPlayer")[0].error.message);
     }
-  });
-
-  $("#videoPlayer")[0].addEventListener('loadeddata', () => {
-    $("#videoPlayer")[0].play();
-  });
-
-
-  $("#videoPlayer")[0].onerror = function() {
-    console.log("Error " + $("#videoPlayer")[0].error.code + "; details: " + $("#videoPlayer")[0].error.message);
-  }
 
 </script>
 

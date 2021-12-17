@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	webrtc "github.com/deepch/vdk/format/webrtcv3"
@@ -38,6 +39,16 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 	// clientInfo := clientManager.getClientInfo(c.Param("cid"));
 	// if err != nil { return 500 Message
 
+	info, err := Storage.Clients.checkOrCreateCID(c.Param("uuid"), c.Param("channel"), c.Param("cid"), WEBRTC)
+	// TODO: Make better error.
+	if err != nil {
+		c.IndentedJSON(500, Message{Status: 0, Payload: err.Error()})
+		requestLogger.WithFields(logrus.Fields{
+			"call": "WriteHeader",
+		}).Errorln(err.Error())
+		return
+	}
+
 	muxerWebRTC := webrtc.NewMuxer(webrtc.Options{})
 	answer, err := muxerWebRTC.WriteHeader(codecs, c.PostForm("data"))
 	if err != nil {
@@ -57,11 +68,18 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 	}
 	go func() {
 
-		// TODO BHL; Check for client_id;
-		// clientInfo := clientManager.getClientInfo(c.Param("cid"));
-		// if err != nil { return 500 Message
+		if err != nil {
+			c.IndentedJSON(400, Message{Status: 0, Payload: err.Error()})
+			requestLogger.WithFields(logrus.Fields{
+				"call": "ClientAdd",
+			}).Errorln(err.Error())
+			return
+		}
 
-		cid, ch, _, err := Storage.ClientAdd(c.Param("uuid"), c.Param("channel"), c.Param("cid"), WEBRTC)
+		cid, ch, _, err := Storage.ClientAdd(info)
+
+		fmt.Println("webrtc Storage.ClientAdd ", info.ClientId, cid)
+
 		if err != nil {
 			c.IndentedJSON(400, Message{Status: 0, Payload: err.Error()})
 			requestLogger.WithFields(logrus.Fields{
@@ -88,6 +106,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 				if !videoStart {
 					continue
 				}
+
 				err = muxerWebRTC.WritePacket(*pck)
 				if err != nil {
 					requestLogger.WithFields(logrus.Fields{
@@ -97,8 +116,14 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 				}
 
 				// TODO BHL
-				// err = clientManager.logPackets(cid, pck.length)
-				// if (err) log error and return;
+
+				err = Storage.Clients.logPackets(cid, len(pck.Data))
+				if err != nil {
+					requestLogger.WithFields(logrus.Fields{
+						"call": "logPackets",
+					}).Errorln(err.Error())
+					return
+				}
 
 			}
 		}

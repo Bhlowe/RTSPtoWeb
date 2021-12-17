@@ -6,7 +6,7 @@ import (
 
 //HTTPAPIServerStreams function return client map
 func HTTPAPIServerClients(c *gin.Context) {
-	c.IndentedJSON(200, Message{Status: 1, Payload: Storage.ClientList()})
+	c.IndentedJSON(200, Message{Status: 1, Payload: Storage.Clients.copyMap()})
 }
 
 // Disconnect a user with userID c::uuid
@@ -24,9 +24,8 @@ func HTTPAPIServerAuthorizeClient(c *gin.Context) {
 
 //HTTPAPIServerStreams function return client map
 func HTTPAPIServerClientInfo(c *gin.Context) {
-	// get ClientInfoStrct
+	// get ClientInfo
 	// if exists, return it as JSON.
 	// if it does not exist, return error or status 0
 	c.IndentedJSON(200, Message{Status: 1})
 }
-

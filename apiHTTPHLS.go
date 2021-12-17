@@ -15,8 +15,20 @@ func HTTPAPIServerStreamHLSM3U8(c *gin.Context) {
 		"module":  "http_hls",
 		"stream":  c.Param("uuid"),
 		"channel": c.Param("channel"),
+		"cid":     c.Param("cid"),
 		"func":    "HTTPAPIServerStreamHLSM3U8",
 	})
+
+	info, err := Storage.Clients.checkOrCreateCID(c.Param("uuid"), c.Param("channel"), c.Param("cid"), RTSP)
+	if err != nil {
+		c.IndentedJSON(500, Message{Status: 0, Payload: ErrorStreamNotFound.Error()})
+		requestLogger.WithFields(logrus.Fields{
+			"call": "checkOrCreateCID",
+		}).Errorln(ErrorStreamNotFound.Error())
+		return
+	}
+
+	cid := info.ClientId
 
 	if !Storage.StreamChannelExist(c.Param("uuid"), c.Param("channel")) {
 		c.IndentedJSON(500, Message{Status: 0, Payload: ErrorStreamNotFound.Error()})
@@ -50,6 +62,7 @@ func HTTPAPIServerStreamHLSM3U8(c *gin.Context) {
 				}).Errorln(err.Error())
 				return
 			}
+			Storage.Clients.logPackets(cid, 12345)
 			// increment bytes sent in clientInfoRecord.bytes
 			return
 		}

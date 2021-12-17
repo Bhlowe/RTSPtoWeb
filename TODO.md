@@ -27,16 +27,17 @@ a random CID would be generated
 
 The server would map a data structure to the CID to hold information about the stream:
 
-````ClientInfo {
-cid string
-stream string //stream they are watching
-channel string 
-start video timestamp
-last_packet sent timestamp
-bytes_sent int
-Mode enum { HLS,WebRTC, XXX} 
-disconnect disconnect 
+````
+type ClientInfoST struct {
+	ClientId string `json:"id,omitempty" `
+	StreamId string `json:"stream,omitempty" groups:"api,config"`
+	Channel  string `json:"channel,omitempty" groups:"api,config"`
+	Start    int    `json:"start,omitempty" groups:"api"` // creation timestamp
+	LastTime int    `json:"last_time,omitempty" groups:"api,config"` // timestamp of last packet sent
+	Mode     int    `json:"mode,omitempty" groups:"api,config"` // enum of stream type
+	Bytes    int    `json:"bytes,omitempty" groups:"api,config"`
 }
+
 ````
 
 A map[cid][ClientInfo] would be kept by the server in the ClientInfoManager.

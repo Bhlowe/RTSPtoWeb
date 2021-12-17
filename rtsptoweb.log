@@ -57,3 +57,51 @@ time="2021-12-16T21:41:56-08:00" level=info msg="Server RTSP start" call=Start f
 time="2021-12-16T21:41:56-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
 time="2021-12-16T21:42:12-08:00" level=info msg="Run stream" call=Run channel=0 func=StreamServerRunStreamDo module=core stream=tower
 time="2021-12-16T21:42:13-08:00" level=info msg="Success connection RTSP" call=Start channel=0 func=StreamServerRunStream module=core stream=tower
+time="2021-12-16T23:02:52-08:00" level=error msg="stream no video" call=ErrorStreamNoVideo channel=0 cid= func=HTTPAPIServerStreamWebRTC module=http_webrtc stream=tower
+time="2021-12-16T23:03:01-08:00" level=error msg="stream no video" call=ErrorStreamNoVideo channel=0 cid= func=HTTPAPIServerStreamWebRTC module=http_webrtc stream=tower
+time="2021-12-16T23:03:33-08:00" level=error msg="WebRTC Client Offline" call=WritePacket channel=0 cid= func=HTTPAPIServerStreamWebRTC module=http_webrtc stream=tower
+time="2021-12-16T23:04:12-08:00" level=info msg="Stream exit by signal or not client" call=StreamServerRunStream channel=0 func=StreamServerRunStreamDo module=core stream=tower
+time="2021-12-17T13:11:59-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-17T13:11:59-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-17T13:11:59-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-17T13:11:59-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-17T13:12:10-08:00" level=info msg="Run stream" call=Run channel=0 func=StreamServerRunStreamDo module=core stream=tower
+time="2021-12-17T13:12:10-08:00" level=info msg="Success connection RTSP" call=Start channel=0 func=StreamServerRunStream module=core stream=tower
+time="2021-12-17T13:22:26-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-17T13:22:26-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-17T13:22:26-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-17T13:22:26-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-17T13:22:33-08:00" level=info msg="Run stream" call=Run channel=0 func=StreamServerRunStreamDo module=core stream=tower
+time="2021-12-17T13:22:34-08:00" level=info msg="Success connection RTSP" call=Start channel=0 func=StreamServerRunStream module=core stream=tower
+time="2021-12-17T13:23:17-08:00" level=error msg="WebRTC Client Offline" call=WritePacket channel=0 cid= func=HTTPAPIServerStreamWebRTC module=http_webrtc stream=tower
+time="2021-12-17T13:46:03-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-17T13:46:03-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-17T13:46:03-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-17T13:46:03-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-17T13:46:15-08:00" level=info msg="Run stream" call=Run channel=0 func=StreamServerRunStreamDo module=core stream=tower
+time="2021-12-17T13:46:38-08:00" level=info msg="Success connection RTSP" call=Start channel=0 func=StreamServerRunStream module=core stream=tower
+time="2021-12-17T13:58:26-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-17T13:58:26-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-17T13:58:26-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-17T13:58:26-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-17T13:58:47-08:00" level=info msg="Run stream" call=Run channel=0 func=StreamServerRunStreamDo module=core stream=tower
+time="2021-12-17T13:58:48-08:00" level=info msg="Success connection RTSP" call=Start channel=0 func=StreamServerRunStream module=core stream=tower
+time="2021-12-17T13:59:21-08:00" level=error msg="WebRTC Client Offline" call=WritePacket channel=0 cid= func=HTTPAPIServerStreamWebRTC module=http_webrtc stream=tower
+time="2021-12-17T14:09:55-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-17T14:09:55-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-17T14:09:55-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-17T14:09:55-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-17T14:10:00-08:00" level=info msg="Run stream" call=Run channel=0 func=StreamServerRunStreamDo module=core stream=tower
+time="2021-12-17T14:10:01-08:00" level=info msg="Success connection RTSP" call=Start channel=0 func=StreamServerRunStream module=core stream=tower
+time="2021-12-17T14:13:06-08:00" level=error msg="WebRTC Client Offline" call=WritePacket channel=0 cid= func=HTTPAPIServerStreamWebRTC module=http_webrtc stream=tower
+time="2021-12-17T14:21:30-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-17T14:21:30-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-17T14:21:30-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-17T14:21:30-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-17T14:26:27-08:00" level=info msg="Run stream" call=Run channel=0 func=StreamServerRunStreamDo module=core stream=tower
+time="2021-12-17T14:26:28-08:00" level=info msg="Success connection RTSP" call=Start channel=0 func=StreamServerRunStream module=core stream=tower
+time="2021-12-17T14:26:43-08:00" level=error msg="stream channel not found" call=logPackets channel=0 cid= func=HTTPAPIServerStreamWebRTC module=http_webrtc stream=tower
+time="2021-12-17T14:27:07-08:00" level=error msg="Stream error restart stream stream stop rtsp signal" call=Restart
+time="2021-12-17T14:27:09-08:00" level=info msg="Run stream" call=Run channel=0 func=StreamServerRunStreamDo module=core stream=tower
+time="2021-12-17T14:27:10-08:00" level=info msg="Success connection RTSP" call=Start channel=0 func=StreamServerRunStream module=core stream=tower
+time="2021-12-17T14:27:29-08:00" level=info msg="Stream exit by signal or not client" call=StreamServerRunStream channel=0 func=StreamServerRunStreamDo module=core stream=tower
