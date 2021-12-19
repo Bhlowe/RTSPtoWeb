@@ -6,6 +6,14 @@ import (
 	"time"
 )
 
+// This class keeps a list of clients (viewers) who ware watching a stream.
+// A token based reservation system can be enabled to pre-authorize a client ID access to a stream:channel
+// We also support disconnecting a client (viewer) by cid (clientID)
+
+// TODO: Since I am updating the contents of the ClientInfoMap, should probably
+// use a pointer to the object... not just replace the item (ClientInfoST) each time it is modified.
+//
+
 func (obj *ClientInfoMapST) init() {
 	fmt.Println("init clients", time.Now().Unix(), obj.ClientInfoMap)
 	obj.ClientInfoMap = make(map[string]ClientInfoST)
@@ -18,10 +26,10 @@ func (obj *ClientInfoMapST) init() {
 	}()
 }
 
-func (obj *ClientInfoMapST) streamChannelID(stream string, channel string) string {
+/*func (obj *ClientInfoMapST) streamChannelID(stream string, channel string) string {
 	return stream + ":" + channel
 }
-
+*/
 func (obj *ClientInfoMapST) requireClientID() bool {
 	return false
 }
@@ -31,8 +39,8 @@ func (obj *ClientInfoMapST) addClient(stream string, channel string, cid string)
 	if !Storage.StreamChannelExist(stream, channel) {
 		return ErrorStreamNotFound
 	}
-	obj.mutex.RLock()
-	defer obj.mutex.RUnlock()
+	obj.mutex.Lock()
+	defer obj.mutex.Unlock()
 
 	_, exist := obj.ClientInfoMap[cid]
 
@@ -72,8 +80,8 @@ func (obj *ClientInfoMapST) checkOrCreateCID(stream string, channel string, cid 
 	fmt.Println("checkOrCreateCID " + cid)
 
 	tm := time.Now()
-	obj.mutex.RLock()
-	defer obj.mutex.RUnlock()
+	obj.mutex.Lock()
+	defer obj.mutex.Unlock()
 
 	if stream == "" || channel == "" {
 		return out, ErrorStreamNotFound
@@ -141,8 +149,7 @@ func (obj *ClientInfoMapST) copyMap() map[string]ClientInfoST {
 
 func (obj *ClientInfoMapST) logPackets(cid string, bytes int) error {
 
-	obj.mutex.RLock()
-	defer obj.mutex.RUnlock()
+	obj.mutex.Lock()
 	v, exist := obj.ClientInfoMap[cid]
 	if !exist {
 		return ErrorStreamChannelNotFound
@@ -152,8 +159,8 @@ func (obj *ClientInfoMapST) logPackets(cid string, bytes int) error {
 	//}
 	v.Bytes += bytes
 	v.LastTime = time.Now()
-
 	obj.ClientInfoMap[cid] = v // TODO: Use pointer instead?
+	obj.mutex.Unlock()
 
 	// fmt.Println("logPackets:", cid, bytes, v.LastTime, v.Bytes)
 	return nil
@@ -180,8 +187,8 @@ func (t ClientInfoST) Now() time.Time {
 // return 1 if removed, return 0 if not removed.
 func (obj *ClientInfoMapST) streamClosed(cid string, reason string, err error) int {
 
-	obj.mutex.RLock()
-	defer obj.mutex.RUnlock()
+	obj.mutex.Lock()
+	defer obj.mutex.Unlock()
 
 	_, exist := obj.ClientInfoMap[cid]
 	if !exist {
@@ -201,8 +208,7 @@ func (obj *ClientInfoMapST) removeStaleClients() {
 	now := time.Now()
 	expireBefore := now.Add(time.Duration(-60) * time.Second)
 
-	obj.mutex.RLock()
-	defer obj.mutex.RUnlock()
+	obj.mutex.Lock()
 
 	for key, value := range obj.ClientInfoMap {
 		if value.LastTime.Before(expireBefore) {
@@ -214,10 +220,9 @@ func (obj *ClientInfoMapST) removeStaleClients() {
 			// ok to delete item from map while iterating through it? delete now.. otherwise.. delete later as list.
 		}
 	}
+	obj.mutex.Unlock()
 
 	if len(expired) > 0 {
-		obj.mutex.RLock()
-		defer obj.mutex.RUnlock()
 		for _, cid := range expired {
 			obj.streamClosed(cid, "expired stream", nil)
 		}

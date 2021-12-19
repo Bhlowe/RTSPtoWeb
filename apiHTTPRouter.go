@@ -74,7 +74,7 @@ func HTTPAPIServer() {
 	// BHL
 	privat.GET("/clients", HTTPAPIServerClients)
 	privat.GET("/client/delete/:cid", HTTPAPIServerDisconnectUser)
-	privat.GET("/client/add", HTTPAPIServerAuthorizeUser)
+	privat.GET("/client/add/:stream", HTTPAPIServerAuthorizeUser)
 	privat.GET("/client/info/:cid", HTTPAPIServerClientInfo)
 
 	/*
