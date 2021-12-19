@@ -34,6 +34,8 @@ func HTTPAPIServer() {
 		public = gin.Default()
 	}
 
+	Storage.Clients.init()
+
 	public.Use(CrossOrigin())
 	//Add private login password protect methods
 	privat := public.Group("/", gin.BasicAuth(gin.Accounts{Storage.ServerHTTPLogin(): Storage.ServerHTTPPassword()}))
@@ -71,7 +73,9 @@ func HTTPAPIServer() {
 
 	// BHL
 	privat.GET("/clients", HTTPAPIServerClients)
-	privat.GET("/clients/delete/:uuid", HTTPAPIServerDeleteClient)
+	privat.GET("/client/delete/:cid", HTTPAPIServerDisconnectUser)
+	privat.GET("/client/add", HTTPAPIServerAuthorizeUser)
+	privat.GET("/client/info/:cid", HTTPAPIServerClientInfo)
 
 	/*
 		Streams Multi Control elements

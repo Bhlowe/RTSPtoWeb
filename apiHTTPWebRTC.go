@@ -35,10 +35,8 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		}).Errorln(err.Error())
 		return
 	}
-	// TODO: Check for client_id;
-	// clientInfo := clientManager.getClientInfo(c.Param("cid"));
-	// if err != nil { return 500 Message
 
+	// BHL, added to maintain list of clients and check for authorization
 	info, err := Storage.Clients.checkOrCreateCID(c.Param("uuid"), c.Param("channel"), c.Param("cid"), WEBRTC)
 	// TODO: Make better error.
 	if err != nil {
@@ -56,6 +54,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		requestLogger.WithFields(logrus.Fields{
 			"call": "WriteHeader",
 		}).Errorln(err.Error())
+		Storage.Clients.streamClosed(info.StreamId, "WriteHeader", err)
 		return
 	}
 	_, err = c.Writer.Write([]byte(answer))
@@ -64,6 +63,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		requestLogger.WithFields(logrus.Fields{
 			"call": "Write",
 		}).Errorln(err.Error())
+		Storage.Clients.streamClosed(info.StreamId, "WriteAnswer", err)
 		return
 	}
 	go func() {
@@ -78,7 +78,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 
 		cid, ch, _, err := Storage.ClientAdd(info)
 
-		fmt.Println("webrtc Storage.ClientAdd ", info.ClientId, cid)
+		fmt.Println("webrtc Storage.ClientAdd ", info.ClientId)
 
 		if err != nil {
 			c.IndentedJSON(400, Message{Status: 0, Payload: err.Error()})
@@ -87,6 +87,9 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 			}).Errorln(err.Error())
 			return
 		}
+
+		defer Storage.Clients.streamClosed(info.ClientId, "deferred close", nil)
+
 		defer Storage.ClientDelete(c.Param("uuid"), cid, c.Param("channel"))
 		var videoStart bool
 		noVideo := time.NewTimer(10 * time.Second)
@@ -112,10 +115,9 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 					requestLogger.WithFields(logrus.Fields{
 						"call": "WritePacket",
 					}).Errorln(err.Error())
+					Storage.Clients.streamClosed(info.ClientId, "WritePacket", err)
 					return
 				}
-
-				// TODO BHL
 
 				err = Storage.Clients.logPackets(cid, len(pck.Data))
 				if err != nil {

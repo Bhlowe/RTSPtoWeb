@@ -19,10 +19,6 @@ func (obj *StorageST) _ClientAdd(streamID string, channelID string, cid string, 
 		return "", nil, nil, ErrorStreamNotFound
 	}
 
-	/*	if err != nil {
-			return "", nil, nil, ErrorClientNotAuthorized
-		}
-	*/
 	//Generate UUID client
 	chAV := make(chan *av.Packet, 2000)
 	chRTP := make(chan *[]byte, 2000)

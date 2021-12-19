@@ -14,6 +14,7 @@ func main() {
 		"module": "main",
 		"func":   "main",
 	}).Info("Server CORE start")
+
 	go HTTPAPIServer()
 	go RTSPServer()
 	go Storage.StreamChannelRunAll()

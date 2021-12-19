@@ -110,13 +110,13 @@ type ClientST struct {
 
 // ClientInfo .. Keep separate or merge into ClientST?
 type ClientInfoST struct {
-	ClientId string `json:"id,omitempty" `
-	StreamId string `json:"stream,omitempty" groups:"api,config"`
-	Channel  string `json:"channel,omitempty" groups:"api,config"`
-	Start    int    `json:"start,omitempty" groups:"api,config"`
-	Mode     int    `json:"mode,omitempty" groups:"api,config"`
-	Bytes    int    `json:"bytes,omitempty" groups:"api,config"`
-	LastTime int    `json:"last_time,omitempty" groups:"api,config"`
+	ClientId string    `json:"id,omitempty" `
+	StreamId string    `json:"stream,omitempty" groups:"api,config"`
+	Channel  string    `json:"channel,omitempty" groups:"api,config"`
+	Mode     int       `json:"mode,omitempty" groups:"api,config"`
+	Bytes    int       `json:"bytes,omitempty" groups:"api,config"`
+	Start    time.Time `json:"start,omitempty" groups:"api,config"`
+	LastTime time.Time `json:"last_time,omitempty" groups:"api,config"`
 }
 
 //Map of ClientInfo records.

@@ -332,7 +332,7 @@ func RTSPServerClientHandle(conn net.Conn) {
 
 //handleRTSPServerPlay func
 func RTSPServerClientPlay(uuid string, channel string, conn net.Conn) {
-
+	// TODO: Check if should include cid in above.
 	info, err2 := Storage.Clients.checkOrCreateCID(uuid, channel, "", RTSP)
 	if err2 != nil {
 		// TODO Log it and handle the if error better.
@@ -352,7 +352,7 @@ func RTSPServerClientPlay(uuid string, channel string, conn net.Conn) {
 	}
 	defer func() {
 
-		Storage.Clients.removeClient(cid)
+		Storage.Clients.streamClosed(cid, "RTSPServerClientPlay", nil)
 		Storage.ClientDelete(uuid, cid, channel)
 		log.WithFields(logrus.Fields{
 			"module":  "rtsp_server",
