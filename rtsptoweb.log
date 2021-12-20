@@ -424,3 +424,458 @@ time="2021-12-19T14:36:51-08:00" level=info msg="Server start success a wait sig
 time="2021-12-19T14:36:51-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
 time="2021-12-19T14:36:51-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
 time="2021-12-19T14:36:51-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T14:41:45-08:00" level=error msg="WebRTC Client Offline" call=WritePacket channel=0 cid= func=HTTPAPIServerStreamWebRTC module=http_webrtc stream=TPC_WEBRTC_1280x720
+time="2021-12-19T14:41:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T14:41:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T14:41:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T14:41:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T14:41:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T14:42:17-08:00" level=info msg="Stream exit by signal or not client" call=StreamServerRunStream channel=0 func=StreamServerRunStreamDo module=core stream=TPC_WEBRTC_1280x720
+time="2021-12-19T14:46:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T14:46:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T14:46:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T14:46:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T14:46:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T14:51:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T14:51:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T14:51:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T14:51:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T14:51:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T14:56:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T14:56:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T14:56:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T14:56:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T14:56:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:01:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:01:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:01:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:01:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:01:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:06:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:06:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:06:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:06:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:06:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:11:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:11:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:11:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:11:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:11:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:16:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:16:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:16:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:16:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:16:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:20:58-08:00" level=info msg="Run stream" call=Run channel=0 func=StreamServerRunStreamDo module=core stream=e0cb3651-c942-4a63-9493-479e0827a38c
+time="2021-12-19T15:20:58-08:00" level=info msg="Success connection RTSP" call=Start channel=0 func=StreamServerRunStream module=core stream=e0cb3651-c942-4a63-9493-479e0827a38c
+time="2021-12-19T15:21:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:21:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:21:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:21:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:21:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:26:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:26:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:26:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:26:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:26:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:31:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:31:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:31:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:31:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:31:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:36:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:36:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:36:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:36:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:36:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:41:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:41:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:41:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:41:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:41:52-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T15:46:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:46:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:46:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:46:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:46:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:51:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:51:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:51:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:51:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:51:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T15:56:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T15:56:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T15:56:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T15:56:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T15:56:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:01:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:01:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:01:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:01:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:01:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:06:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:06:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:06:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:06:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:06:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:11:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:11:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:11:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:11:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:11:52-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T16:16:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:16:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:16:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:16:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:16:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:21:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:21:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:21:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:21:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:21:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:26:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:26:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:26:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:26:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:26:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:31:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:31:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:31:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:31:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:31:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:31:52-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T16:36:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:36:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:36:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:36:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:36:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:41:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:41:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:41:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:41:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:41:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:46:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:46:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:46:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:46:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:46:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:51:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:51:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:51:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:51:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:51:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T16:56:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T16:56:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T16:56:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T16:56:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T16:56:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:01:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:01:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:01:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:01:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:01:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:06:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:06:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:06:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:06:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:06:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:11:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:11:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:11:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:11:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:11:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:16:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:16:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:16:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:16:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:16:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:21:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:21:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:21:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:21:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:21:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:21:52-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T17:26:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:26:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:26:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:26:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:26:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:31:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:31:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:31:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:31:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:31:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:31:52-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T17:36:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:36:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:36:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:36:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:36:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:41:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:41:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:41:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:41:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:41:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:46:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:46:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:46:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:46:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:46:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:51:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:51:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:51:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:51:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:51:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:56:52-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:56:52-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:56:52-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:56:52-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:56:52-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T17:56:52-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T17:59:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:59:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:59:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:59:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:59:12-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T17:59:31-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T17:59:31-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T17:59:31-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T17:59:31-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T17:59:31-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:04:36-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:04:36-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:04:36-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:04:36-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:04:36-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:04:36-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T18:05:21-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:05:21-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:05:21-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:05:21-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:05:21-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:06:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:06:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:06:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:06:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:06:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:11:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:11:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:11:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:11:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:11:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:16:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:16:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:16:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:16:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:16:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:21:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:21:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:21:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:21:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:21:11-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T18:26:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:26:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:26:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:26:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:26:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:31:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:31:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:31:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:31:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:31:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:36:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:36:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:36:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:36:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:36:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:41:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:41:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:41:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:41:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:41:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:46:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:46:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:46:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:46:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:46:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:51:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:51:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:51:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:51:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:51:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T18:56:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T18:56:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T18:56:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T18:56:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T18:56:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:01:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:01:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:01:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:01:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:01:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:06:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:06:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:06:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:06:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:06:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:11:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:11:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:11:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:11:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:11:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:16:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:16:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:16:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:16:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:16:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:21:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:21:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:21:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:21:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:21:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:26:11-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:26:11-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:26:11-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:26:11-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:26:11-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:31:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:31:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:31:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:31:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:31:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:36:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:36:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:36:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:36:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:36:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:41:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:41:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:41:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:41:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:41:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:46:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:46:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:46:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:46:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:46:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:51:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:51:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:51:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:51:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:51:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:56:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T19:56:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T19:56:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T19:56:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T19:56:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T19:56:12-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T20:01:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:01:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:01:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:01:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:01:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:06:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:06:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:06:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:06:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:06:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:11:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:11:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:11:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:11:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:11:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:16:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:16:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:16:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:16:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:16:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:21:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:21:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:21:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:21:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:21:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:26:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:26:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:26:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:26:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:26:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:26:12-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T20:31:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:31:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:31:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:31:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:31:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:36:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:36:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:36:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:36:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:36:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:41:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:41:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:41:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:41:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:41:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:46:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:46:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:46:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:46:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:46:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:51:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:51:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:51:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:51:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:51:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T20:56:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T20:56:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T20:56:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T20:56:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T20:56:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T21:01:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T21:01:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T21:01:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T21:01:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T21:01:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T21:06:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T21:06:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T21:06:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T21:06:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T21:06:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T21:26:12-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T21:26:12-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T21:26:12-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T21:26:12-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T21:26:12-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T21:26:12-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T21:32:24-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T21:32:24-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T21:32:24-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T21:32:24-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T21:32:24-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T21:32:24-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T21:32:58-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T21:32:58-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T21:32:58-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T21:32:58-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T21:32:58-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T21:38:05-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T21:38:05-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T21:38:05-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T21:38:05-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T21:38:05-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T21:43:05-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T21:43:05-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T21:43:05-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T21:43:05-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T21:43:05-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T21:43:05-08:00" level=fatal msg="listen tcp :8083: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=ServerHTTPPort func=HTTPAPIServer module=http_router
+time="2021-12-19T21:48:05-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T21:48:05-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T21:48:05-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T21:48:05-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T21:48:05-08:00" level=error msg="listen tcp :5541: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted." call=Listen func=RTSPServer module=rtsp_server
+time="2021-12-19T21:48:39-08:00" level=info msg="Server CORE start" func=main module=main
+time="2021-12-19T21:48:39-08:00" level=info msg="Server start success a wait signals" func=main module=main
+time="2021-12-19T21:48:39-08:00" level=info msg="Server HTTP start" call=Start func=RTSPServer module=http_server
+time="2021-12-19T21:48:39-08:00" level=info msg="Server RTSP start" call=Start func=RTSPServer module=rtsp_server
+time="2021-12-19T21:48:49-08:00" level=info msg="Run stream" call=Run channel=0 func=StreamServerRunStreamDo module=core stream=TPC_WEBRTC_1280x720
+time="2021-12-19T21:48:49-08:00" level=info msg="Success connection RTSP" call=Start channel=0 func=StreamServerRunStream module=core stream=TPC_WEBRTC_1280x720

@@ -35,6 +35,7 @@ func (obj *ClientInfoMapST) requireClientID() bool {
 }
 
 func (obj *ClientInfoMapST) addClient(stream string, channel string, cid string) error {
+	fmt.Println("addClient", stream, cid)
 
 	if !Storage.StreamChannelExist(stream, channel) {
 		return ErrorStreamNotFound
@@ -77,8 +78,6 @@ func (obj *ClientInfoMapST) checkOrCreateCID(stream string, channel string, cid 
 		return out, ErrorStreamNotFound
 	}
 
-	fmt.Println("checkOrCreateCID " + cid)
-
 	tm := time.Now()
 	obj.mutex.Lock()
 	defer obj.mutex.Unlock()
@@ -101,6 +100,7 @@ func (obj *ClientInfoMapST) checkOrCreateCID(stream string, channel string, cid 
 		// update mode..
 		v.Mode = mode
 		obj.ClientInfoMap[cid] = out
+		fmt.Println("checkOrCreateCID authorized", cid)
 
 		return v, nil
 	}
@@ -118,6 +118,7 @@ func (obj *ClientInfoMapST) checkOrCreateCID(stream string, channel string, cid 
 	out.Mode = mode
 
 	obj.ClientInfoMap[cid] = out
+	fmt.Println("checkOrCreateCID no auth needed", cid)
 
 	return out, nil
 }
@@ -186,6 +187,7 @@ func (t ClientInfoST) Now() time.Time {
 
 // return 1 if removed, return 0 if not removed.
 func (obj *ClientInfoMapST) streamClosed(cid string, reason string, err error) int {
+	fmt.Println("streamClosed", reason, cid)
 
 	obj.mutex.Lock()
 	defer obj.mutex.Unlock()
@@ -209,13 +211,12 @@ func (obj *ClientInfoMapST) removeStaleClients() {
 	expireBefore := now.Add(time.Duration(-60) * time.Second)
 
 	obj.mutex.Lock()
-
 	for key, value := range obj.ClientInfoMap {
 		if value.LastTime.Before(expireBefore) {
 			expired = append(expired, key)
-			delta := value.LastTime.Sub(value.Start)
+			// delta := value.LastTime.Sub(value.Start)
 			// value.LastTime - value.Start
-			fmt.Println("remove stale client, last,start,delta, seconds", value.String(), value.LastTime, value.Start, delta, value.Seconds())
+			// fmt.Println("remove stale client, last,start,delta, seconds", value.String(), value.LastTime, value.Start, delta, value.Seconds())
 
 			// ok to delete item from map while iterating through it? delete now.. otherwise.. delete later as list.
 		}
