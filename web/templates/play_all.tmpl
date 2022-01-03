@@ -177,10 +177,11 @@ let colordebug = true;
 let isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 && navigator.userAgent && navigator.userAgent.indexOf('CriOS') == -1 && navigator.userAgent.indexOf('FxiOS') == -1;
   $(document).ready(()=>{
     $('.videoPlayer').each(function() {
+        let cid = '' + Math.random();
 
       switch ($(this).attr('vtype')) {
         case 'hls':
-        var url = '/stream/' + uuid + '/channel/' + channel + '/hls/live/index.m3u8';
+        var url = '/stream/' + uuid + '/channel/' + channel + '/hls/live/index.m3u8?cid='+cid;
         if (isSafari && $(this)[0].canPlayType('application/vnd.apple.mpegurl')) {
           $(this)[0].src = url;
           $(this)[0].load();

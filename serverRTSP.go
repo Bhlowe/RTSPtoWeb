@@ -139,6 +139,7 @@ func RTSPServer() {
 			"func":   "RTSPServer",
 			"call":   "Listen",
 		}).Errorln(err)
+		fmt.Println("Listen on port failed", Storage.ServerRTSPPort(), err)
 		os.Exit(1)
 	}
 	defer func() {
@@ -333,7 +334,7 @@ func RTSPServerClientHandle(conn net.Conn) {
 //handleRTSPServerPlay func
 func RTSPServerClientPlay(uuid string, channel string, conn net.Conn) {
 	// TODO: Check if should include cid in above.
-	info, err2 := Storage.Clients.checkOrCreateCID(uuid, channel, "", RTSP)
+	info, err2 := Storage.Clients.checkClient(uuid, channel, "", RTSP)
 	if err2 != nil {
 		// TODO Log it and handle the if error better.
 		return

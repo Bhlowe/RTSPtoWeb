@@ -37,7 +37,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 	}
 
 	// BHL, added to maintain list of clients and check for authorization
-	info, err := Storage.Clients.checkOrCreateCID(c.Param("uuid"), c.Param("channel"), c.Param("cid"), WEBRTC)
+	info, err := Storage.Clients.checkClient(c.Param("uuid"), c.Param("channel"), c.Param("cid"), WEBRTC)
 	// TODO: Make better error.
 	if err != nil {
 		c.IndentedJSON(500, Message{Status: 0, Payload: err.Error()})

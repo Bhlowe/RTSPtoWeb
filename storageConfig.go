@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"time"
@@ -31,6 +32,7 @@ func NewStreamCore() *StorageST {
 			"func":   "NewStreamCore",
 			"call":   "ReadFile",
 		}).Errorln(err.Error())
+		fmt.Println("Fatal error loading config.json", err)
 		os.Exit(1)
 	}
 	err = json.Unmarshal(data, &tmp)
@@ -40,6 +42,7 @@ func NewStreamCore() *StorageST {
 			"func":   "NewStreamCore",
 			"call":   "Unmarshal",
 		}).Errorln(err.Error())
+		fmt.Println("Fatal error json.Unmarshal config.json", err)
 		os.Exit(1)
 	}
 	debug = tmp.Server.Debug

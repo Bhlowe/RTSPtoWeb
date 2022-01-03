@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"time"
 
 	"github.com/deepch/vdk/format/ts"
@@ -15,20 +16,28 @@ func HTTPAPIServerStreamHLSM3U8(c *gin.Context) {
 		"module":  "http_hls",
 		"stream":  c.Param("uuid"),
 		"channel": c.Param("channel"),
-		"cid":     c.Param("cid"),
+		"cid":     c.Query("cid"),
 		"func":    "HTTPAPIServerStreamHLSM3U8",
 	})
 
-	info, err := Storage.Clients.checkOrCreateCID(c.Param("uuid"), c.Param("channel"), c.Param("cid"), RTSP)
+	var cid = c.Query("cid")
+	if len(cid) == 0 {
+		fmt.Println("no cid for "+c.Request.RequestURI, cid)
+	}
+
+	info, err := Storage.Clients.checkClient(c.Param("uuid"), c.Param("channel"), cid, RTSP)
 	if err != nil {
+		fmt.Println("HTTPAPIServerStreamHLSM3U8 no cid found", cid)
+		Storage.Clients.checkClient(c.Param("uuid"), c.Param("channel"), cid, RTSP)
+
 		c.IndentedJSON(500, Message{Status: 0, Payload: ErrorStreamNotFound.Error()})
 		requestLogger.WithFields(logrus.Fields{
-			"call": "checkOrCreateCID",
+			"call": "checkClient",
 		}).Errorln(ErrorStreamNotFound.Error())
 		return
 	}
 
-	cid := info.ClientId
+	cid = info.ClientId
 
 	if !Storage.StreamChannelExist(c.Param("uuid"), c.Param("channel")) {
 		c.IndentedJSON(500, Message{Status: 0, Payload: ErrorStreamNotFound.Error()})
@@ -42,9 +51,10 @@ func HTTPAPIServerStreamHLSM3U8(c *gin.Context) {
 
 	c.Header("Content-Type", "application/x-mpegURL")
 	Storage.StreamChannelRun(c.Param("uuid"), c.Param("channel"))
+
 	//If stream mode on_demand need wait ready segment's
 	for i := 0; i < 40; i++ {
-		index, seq, err := Storage.StreamHLSm3u8(c.Param("uuid"), c.Param("channel"))
+		index, seq, err := Storage.StreamHLSm3u8(c.Param("uuid"), c.Param("channel"), cid)
 		if err != nil {
 			c.IndentedJSON(500, Message{Status: 0, Payload: err.Error()})
 			requestLogger.WithFields(logrus.Fields{
@@ -55,6 +65,7 @@ func HTTPAPIServerStreamHLSM3U8(c *gin.Context) {
 		if seq >= 6 {
 
 			_, err := c.Writer.Write([]byte(index))
+
 			if err != nil {
 				c.IndentedJSON(400, Message{Status: 0, Payload: err.Error()})
 				requestLogger.WithFields(logrus.Fields{
@@ -62,7 +73,7 @@ func HTTPAPIServerStreamHLSM3U8(c *gin.Context) {
 				}).Errorln(err.Error())
 				return
 			}
-			Storage.Clients.logPackets(cid, 12345)
+			Storage.Clients.logPackets(cid, len([]byte(index)))
 			// increment bytes sent in clientInfoRecord.bytes
 			return
 		}
@@ -76,6 +87,7 @@ func HTTPAPIServerStreamHLSTS(c *gin.Context) {
 		"module":  "http_hls",
 		"stream":  c.Param("uuid"),
 		"channel": c.Param("channel"),
+		"cid":     c.Query("cid"),
 		"func":    "HTTPAPIServerStreamHLSTS",
 	})
 
@@ -147,5 +159,6 @@ func HTTPAPIServerStreamHLSTS(c *gin.Context) {
 		}).Errorln(err.Error())
 		return
 	}
+	Storage.Clients.logPackets(c.Query("cid"), len(outfile.Bytes()))
 
 }

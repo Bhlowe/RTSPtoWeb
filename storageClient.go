@@ -6,7 +6,7 @@ import (
 	"github.com/deepch/vdk/av"
 )
 
-func (obj *StorageST) ClientAdd(info ClientInfoST) (string, chan *av.Packet, chan *[]byte, error) {
+func (obj *StorageST) ClientAdd(info *ClientInfoST) (string, chan *av.Packet, chan *[]byte, error) {
 	return obj._ClientAdd(info.StreamId, info.Channel, info.ClientId, info.Mode)
 }
 

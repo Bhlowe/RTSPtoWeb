@@ -26,7 +26,7 @@ func (obj *StorageST) StreamHLSAdd(uuid string, channelID string, val []*av.Pack
 }
 
 //StreamHLSm3u8 get hls m3u8 list
-func (obj *StorageST) StreamHLSm3u8(uuid string, channelID string) (string, int, error) {
+func (obj *StorageST) StreamHLSm3u8(uuid string, channelID string, cid string) (string, int, error) {
 	obj.mutex.RLock()
 	defer obj.mutex.RUnlock()
 	if tmp, ok := obj.Streams[uuid]; ok {
@@ -42,7 +42,7 @@ func (obj *StorageST) StreamHLSm3u8(uuid string, channelID string) (string, int,
 			var count int
 			for _, i := range keys {
 				count++
-				out += "#EXTINF:" + strconv.FormatFloat(channelTmp.hlsSegmentBuffer[i].dur.Seconds(), 'f', 1, 64) + ",\r\nsegment/" + strconv.Itoa(i) + "/file.ts\r\n"
+				out += "#EXTINF:" + strconv.FormatFloat(channelTmp.hlsSegmentBuffer[i].dur.Seconds(), 'f', 1, 64) + ",\r\nsegment/" + strconv.Itoa(i) + "/file.ts?cid=" + cid + "\r\n"
 
 			}
 			return out, count, nil

@@ -15,8 +15,8 @@ import (
 //
 
 func (obj *ClientInfoMapST) init() {
-	fmt.Println("init clients", time.Now().Unix(), obj.ClientInfoMap)
-	obj.ClientInfoMap = make(map[string]ClientInfoST)
+	fmt.Println("init clients")
+	obj.ClientInfoMap = make(map[string]*ClientInfoST)
 
 	ticker := time.NewTicker(15 * time.Second)
 	go func() {
@@ -34,12 +34,34 @@ func (obj *ClientInfoMapST) requireClientID() bool {
 	return false
 }
 
-func (obj *ClientInfoMapST) addClient(stream string, channel string, cid string) error {
-	fmt.Println("addClient", stream, cid)
+// this gets info about the map.
+// also used for sanity checking the map.
+func (obj *ClientInfoMapST) inspect() string {
+	var s = ""
+	if true {
+		/*		obj.mutex.Lock()
+				defer obj.mutex.Unlock()
+		*/
+		for key, value := range obj.ClientInfoMap {
+			if len(value.StreamId) == 0 || len(value.Channel) == 0 {
+				fmt.Println("Error with map entry:" + key)
+			}
+			line := key + "->" + value.StreamId + " " + value.ClientId + " " + value.Channel
+			s += line + "\n"
+		}
+	}
+	return s
 
+}
+func (obj *ClientInfoMapST) addClient(stream string, channel string, cid string) error {
+	fmt.Println("addClient", stream, cid, channel)
+
+	/* allow token for stream that doesn't exist (yet)
 	if !Storage.StreamChannelExist(stream, channel) {
 		return ErrorStreamNotFound
 	}
+	*/
+
 	obj.mutex.Lock()
 	defer obj.mutex.Unlock()
 
@@ -57,6 +79,10 @@ func (obj *ClientInfoMapST) addClient(stream string, channel string, cid string)
 		cid = copy
 	}
 
+	if (len(stream) == 0) || len(channel) == 0 {
+
+	}
+
 	out.Channel = channel
 	out.StreamId = stream
 	out.ClientId = cid
@@ -64,18 +90,20 @@ func (obj *ClientInfoMapST) addClient(stream string, channel string, cid string)
 	out.Bytes = 0
 	out.Start = tm
 	out.Mode = -1
-	obj.ClientInfoMap[cid] = out
+	obj.ClientInfoMap[cid] = &out
+
+	fmt.Println("addedClient", stream, cid)
+	fmt.Println(obj.inspect())
 
 	return nil
-
 }
 
-func (obj *ClientInfoMapST) checkOrCreateCID(stream string, channel string, cid string, mode int) (ClientInfoST, error) {
-
-	var out ClientInfoST
+func (obj *ClientInfoMapST) checkClient(stream string, channel string, cid string, mode int) (*ClientInfoST, error) {
 
 	if !Storage.StreamChannelExist(stream, channel) {
-		return out, ErrorStreamNotFound
+		fmt.Println("checkClient no stream for ", stream, cid)
+
+		return nil, ErrorStreamNotFound
 	}
 
 	tm := time.Now()
@@ -83,32 +111,41 @@ func (obj *ClientInfoMapST) checkOrCreateCID(stream string, channel string, cid 
 	defer obj.mutex.Unlock()
 
 	if stream == "" || channel == "" {
-		return out, ErrorStreamNotFound
+		return nil, ErrorStreamNotFound
 	}
 
 	if cid == "" {
 		copy, _ := generateUUID()
 		cid = copy
+		if obj.requireClientID() {
+			fmt.Println("empty cid not allowed")
+			return nil, ErrorClientNotAuthorized
+		}
+
 	}
 
 	v, exist := obj.ClientInfoMap[cid]
 	if exist {
 		// double check stream and channel.
 		if stream != v.StreamId || channel != v.Channel {
-			return out, ErrorClientNotAuthorized
+			return nil, ErrorClientNotAuthorized
 		}
 		// update mode..
 		v.Mode = mode
-		obj.ClientInfoMap[cid] = out
-		fmt.Println("checkOrCreateCID authorized", cid)
+		v.LastTime = tm
+
+		// fmt.Println("checkClient authorized", cid, obj.inspect())
 
 		return v, nil
 	}
 
+	fmt.Println("No CID found: ", cid, stream, obj.inspect())
+
 	if obj.requireClientID() {
-		return out, ErrorClientNotAuthorized
+		return nil, ErrorClientNotAuthorized
 	}
 
+	var out ClientInfoST
 	out.Channel = channel
 	out.StreamId = stream
 	out.ClientId = cid
@@ -117,24 +154,31 @@ func (obj *ClientInfoMapST) checkOrCreateCID(stream string, channel string, cid 
 	out.Start = tm
 	out.Mode = mode
 
-	obj.ClientInfoMap[cid] = out
-	fmt.Println("checkOrCreateCID no auth needed", cid)
+	obj.ClientInfoMap[cid] = &out
+	fmt.Println("checkClient no auth needed", cid, obj.inspect())
+	obj.inspect()
 
-	return out, nil
+	return &out, nil
 }
 
-func (obj *ClientInfoMapST) getClientInfo(cid string) (ClientInfoST, bool) {
+func (obj *ClientInfoMapST) getClient(cid string) (ClientInfoST, bool) {
 	obj.mutex.RLock()
 	defer obj.mutex.RUnlock()
 	out, exist := obj.ClientInfoMap[cid]
-	return out, exist // obj.ClientInfoMap[cid]
+	return *out, exist // obj.ClientInfoMap[cid]
 }
 
-func (obj *ClientInfoMapST) hasClientInfo(cid string) bool {
+func (obj *ClientInfoMapST) hasClient(cid string) bool {
 	obj.mutex.RLock()
 	defer obj.mutex.RUnlock()
 	_, exist := obj.ClientInfoMap[cid]
 	return exist
+}
+
+func (obj *ClientInfoMapST) len() int {
+	obj.mutex.RLock()
+	defer obj.mutex.RUnlock()
+	return len(obj.ClientInfoMap)
 }
 
 // Return a copy of the map.
@@ -143,27 +187,38 @@ func (obj *ClientInfoMapST) copyMap() map[string]ClientInfoST {
 	defer obj.mutex.RUnlock()
 	tmp := make(map[string]ClientInfoST)
 	for key, value := range obj.ClientInfoMap {
-		tmp[key] = value
+		tmp[key] = *value
 	}
 	return tmp
+}
+
+func (t *ClientInfoST) logPackets(bytes int) {
+	t.Bytes += bytes
+	t.LastTime = time.Now()
 }
 
 func (obj *ClientInfoMapST) logPackets(cid string, bytes int) error {
 
 	obj.mutex.Lock()
+	defer obj.mutex.Unlock()
+
 	v, exist := obj.ClientInfoMap[cid]
 	if !exist {
 		return ErrorStreamChannelNotFound
 	}
-	//if (v.Disconnected) {
-	//	return ErrorStreamChannelNotFound
-	//}
-	v.Bytes += bytes
-	v.LastTime = time.Now()
-	obj.ClientInfoMap[cid] = v // TODO: Use pointer instead?
-	obj.mutex.Unlock()
 
-	// fmt.Println("logPackets:", cid, bytes, v.LastTime, v.Bytes)
+	v.logPackets(bytes)
+	obj.inspect()
+	obj.ClientInfoMap[cid] = v
+
+	if false {
+		copy := obj.ClientInfoMap[cid]
+		if copy.Bytes != v.Bytes {
+			fmt.Println("failed check.")
+		}
+		// fmt.Println("logPackets:", cid, bytes, copy.LastTime, copy.Bytes, copy.Seconds())
+	}
+
 	return nil
 }
 
@@ -211,12 +266,14 @@ func (obj *ClientInfoMapST) removeStaleClients() {
 	expireBefore := now.Add(time.Duration(-60) * time.Second)
 
 	obj.mutex.Lock()
+
 	for key, value := range obj.ClientInfoMap {
 		if value.LastTime.Before(expireBefore) {
 			expired = append(expired, key)
-			// delta := value.LastTime.Sub(value.Start)
-			// value.LastTime - value.Start
-			// fmt.Println("remove stale client, last,start,delta, seconds", value.String(), value.LastTime, value.Start, delta, value.Seconds())
+			if false {
+				delta := value.LastTime.Sub(value.Start)
+				fmt.Println("remove stale client, last,start,delta, seconds", value.String(), value.LastTime, value.Start, delta, value.Seconds())
+			}
 
 			// ok to delete item from map while iterating through it? delete now.. otherwise.. delete later as list.
 		}

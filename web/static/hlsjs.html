@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<script src="js/RtspToWeb.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<!--
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/adminlte.min.js"></script>
+<script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="js/index.js"></script>
+-->
+
+
+<video id="videoPlayer" autoplay muted playsinline></video>
+
+
+<script src="/../static/plugins/hlsjs/hls.min.js"></script>
+<script>
+
+    $(document).ready(() => {
+        startPlay();
+    });
+
+
+    function startPlay() {
+        let uuid = 'tower';
+        let cid = '' + Math.random();
+
+
+        let channel = '0';	// $('#channel').val();
+        let url = '/stream/' + uuid + '/channel/' + channel + '/hls/live/index.m3u8?cid=' + cid;
+
+        if (!Hls.isSupported()) {
+            console.log("Hls not supported... playing anyway..");
+        }
+
+        let hls = new Hls({manifestLoadingTimeOut: 60000});
+        hls.loadSource(url);
+        hls.attachMedia($("#videoPlayer")[0]);
+        hls.on('error', function (e) {
+            console.log(e);
+        })
+
+    }
+
+    let canplaythroughTime = null;//time when  buffer have enaugh to play
+
+    $("#videoPlayer")[0].addEventListener('progress', () => {
+        if (typeof document.hidden !== "undefined" && document.hidden && canplaythroughTime != null) {
+            //no sound, browser paused video without sound in background
+            $("#videoPlayer")[0].currentTime = $("#videoPlayer")[0].buffered.end(($("#videoPlayer")[0].buffered.length - 1)) - canplaythroughTime;
+        }
+    });
+
+    $("#videoPlayer")[0].addEventListener('canplaythrough', () => {
+        if (canplaythroughTime == null) {
+            canplaythroughTime = $("#videoPlayer")[0].buffered.end(($("#videoPlayer")[0].buffered.length - 1));
+        }
+    });
+
+    $("#videoPlayer")[0].addEventListener('loadeddata', () => {
+        $("#videoPlayer")[0].play();
+    });
+
+
+    $("#videoPlayer")[0].onerror = function () {
+        console.log("Error " + $("#videoPlayer")[0].error.code + "; details: " + $("#videoPlayer")[0].error.message);
+    }
+
+</script>
+
+
+</body>
+</html>

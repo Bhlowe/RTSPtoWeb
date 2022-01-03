@@ -122,7 +122,7 @@ type ClientInfoST struct {
 //Map of ClientInfo records.
 type ClientInfoMapST struct {
 	mutex         sync.RWMutex
-	ClientInfoMap map[string]ClientInfoST
+	ClientInfoMap map[string]*ClientInfoST
 }
 
 //SegmentOld HLS cache section

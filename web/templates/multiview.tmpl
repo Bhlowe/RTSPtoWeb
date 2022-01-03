@@ -227,10 +227,11 @@
         videoPlayer.find('video')[0].play();
       }
     });
-
+    let cid = Math.random();
     switch (playerType) {
+
       case 'hls':
-        let url = '/stream/' + uuid + '/channel/' + channel + '/hls/live/index.m3u8';
+        let url = '/stream/' + uuid + '/channel/' + channel + '/hls/live/index.m3u8?cid='+cid;
 
         if (videoPlayer.find('video')[0].canPlayType('application/vnd.apple.mpegurl')) {
           videoPlayer.find('video')[0].src = url;
@@ -337,7 +338,7 @@
         potocol = 'wss';
       }
 
-      let ws_url = potocol + '://' + location.host + '/stream/' + this.uuid + '/channel/' + this.channel + '/mse?uuid=' + this.uuid + '&channel=' + this.channel;
+      let ws_url = potocol + '://' + location.host + '/stream/' + this.uuid + '/channel/' + this.channel + '/mse?uuid=' + this.uuid + '&channel=' + this.channel+'&cid='+cid;
 
       this.mse.addEventListener('sourceopen', function() {
         _this.ws = new WebSocket(ws_url);
@@ -472,7 +473,7 @@
 
         offer = await _this.webrtc.createOffer();
         await _this.webrtc.setLocalDescription(offer);
-        $.post("/stream/" + _this.uuid + "/channel/" + this.channel + "/webrtc?uuid=" + _this.uuid + "&channel=" + this.channel, {
+        $.post("/stream/" + _this.uuid + "/channel/" + this.channel + "/webrtc?uuid=" + _this.uuid + "&channel=" + this.channel+"&cid="+cid, {
           data: btoa(_this.webrtc.localDescription.sdp)
         }, function(data) {
           try {

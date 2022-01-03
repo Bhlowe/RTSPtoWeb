@@ -39,7 +39,7 @@ func HTTPAPIServerStreamMSE(ws *websocket.Conn) {
 		return
 	}
 
-	clientInfoST, err := Storage.Clients.checkOrCreateCID(ws.Request().FormValue("uuid"), ws.Request().FormValue("channel"), ws.Request().FormValue("cid"), MSE)
+	clientInfoST, err := Storage.Clients.checkClient(ws.Request().FormValue("uuid"), ws.Request().FormValue("channel"), ws.Request().FormValue("cid"), MSE)
 
 	cid, ch, _, err := Storage.ClientAdd(clientInfoST)
 	if err != nil {
