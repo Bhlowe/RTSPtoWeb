@@ -498,6 +498,8 @@ let isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 && nav
     this.uuid = uuid;
     this.video = videoPlayerVar.find('video')[0];
     this.channel = channel || 0;
+    this.cid = Math.random();
+
     this.playWebrtc = function() {
         var _this = this;
         this.webrtc = new RTCPeerConnection({
@@ -531,7 +533,7 @@ let isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 && nav
 
         offer = await _this.webrtc.createOffer();
         await _this.webrtc.setLocalDescription(offer);
-        $.post("/stream/" + _this.uuid + "/channel/" + this.channel + "/webrtc?uuid=" + _this.uuid + "&channel=" + this.channel, {
+        $.post("/stream/" + _this.uuid + "/channel/" + this.channel + "/webrtc?uuid=" + _this.uuid + "&channel=" + this.channel+"&cid="+this.cid, {
           data: btoa(_this.webrtc.localDescription.sdp)
         }, function(data) {
           try {

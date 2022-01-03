@@ -353,7 +353,7 @@ func RTSPServerClientPlay(uuid string, channel string, conn net.Conn) {
 	}
 	defer func() {
 
-		Storage.Clients.streamClosed(cid, "RTSPServerClientPlay", nil)
+		Storage.Clients.removeClient(cid, "RTSPServerClientPlay", nil)
 		Storage.ClientDelete(uuid, cid, channel)
 		log.WithFields(logrus.Fields{
 			"module":  "rtsp_server",

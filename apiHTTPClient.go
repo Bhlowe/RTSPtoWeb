@@ -13,7 +13,7 @@ func HTTPAPIServerClients(c *gin.Context) {
 // Disconnect a user with userID c::cid
 func HTTPAPIServerDisconnectUser(c *gin.Context) {
 	// Disconnect a user with clientID ("cid")
-	status := Storage.Clients.streamClosed(c.Param("cid"), "api_disconnect", nil)
+	status := Storage.Clients.removeClient(c.Param("cid"), "api_disconnect", nil)
 	c.IndentedJSON(200, Message{Status: status})
 }
 

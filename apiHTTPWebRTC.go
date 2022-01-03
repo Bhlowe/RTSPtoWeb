@@ -15,9 +15,10 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		"module":  "http_webrtc",
 		"stream":  c.Param("uuid"),
 		"channel": c.Param("channel"),
-		"cid":     c.Param("cid"),
+		"cid":     c.Query("cid"),
 		"func":    "HTTPAPIServerStreamWebRTC",
 	})
+	cid := c.Query("cid")
 
 	if !Storage.StreamChannelExist(c.Param("uuid"), c.Param("channel")) {
 		c.IndentedJSON(500, Message{Status: 0, Payload: ErrorStreamNotFound.Error()})
@@ -37,7 +38,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 	}
 
 	// BHL, added to maintain list of clients and check for authorization
-	info, err := Storage.Clients.checkClient(c.Param("uuid"), c.Param("channel"), c.Param("cid"), WEBRTC)
+	info, err := Storage.Clients.checkClient(c.Param("uuid"), c.Param("channel"), cid, WEBRTC)
 	// TODO: Make better error.
 	if err != nil {
 		c.IndentedJSON(500, Message{Status: 0, Payload: err.Error()})
@@ -54,7 +55,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		requestLogger.WithFields(logrus.Fields{
 			"call": "WriteHeader",
 		}).Errorln(err.Error())
-		Storage.Clients.streamClosed(info.StreamId, "WriteHeader", err)
+		Storage.Clients.removeClient(info.StreamId, "WriteHeader", err)
 		return
 	}
 	_, err = c.Writer.Write([]byte(answer))
@@ -63,7 +64,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		requestLogger.WithFields(logrus.Fields{
 			"call": "Write",
 		}).Errorln(err.Error())
-		Storage.Clients.streamClosed(info.StreamId, "WriteAnswer", err)
+		Storage.Clients.removeClient(info.StreamId, "WriteAnswer", err)
 		return
 	}
 	go func() {
@@ -88,7 +89,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 			return
 		}
 
-		defer Storage.Clients.streamClosed(info.ClientId, "deferred close", nil)
+		defer Storage.Clients.removeClient(info.ClientId, "deferred webrtc close", nil)
 
 		defer Storage.ClientDelete(c.Param("uuid"), cid, c.Param("channel"))
 		var videoStart bool
@@ -115,7 +116,7 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 					requestLogger.WithFields(logrus.Fields{
 						"call": "WritePacket",
 					}).Errorln(err.Error())
-					Storage.Clients.streamClosed(info.ClientId, "WritePacket", err)
+					Storage.Clients.removeClient(info.ClientId, "WritePacket", err)
 					return
 				}
 

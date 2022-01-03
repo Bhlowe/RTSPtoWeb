@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -64,6 +65,20 @@ func (obj *ClientInfoMapST) addClient(stream string, channel string, cid string)
 
 	obj.mutex.Lock()
 	defer obj.mutex.Unlock()
+
+	if true {
+		// testing only.
+		if cid == "crash1" {
+			fmt.Println("calling crash1")
+			obj.mutex.Lock() // this should hang system.
+			fmt.Println("crash1 escaped?")
+		}
+		if cid == "crash2" {
+			fmt.Println("calling crash2")
+			os.Exit(1)
+			fmt.Println("crash2 escaped?")
+		}
+	}
 
 	_, exist := obj.ClientInfoMap[cid]
 
@@ -155,7 +170,7 @@ func (obj *ClientInfoMapST) checkClient(stream string, channel string, cid strin
 	out.Mode = mode
 
 	obj.ClientInfoMap[cid] = &out
-	fmt.Println("checkClient no auth needed", cid, obj.inspect())
+	fmt.Println("checkClient no auth needed", cid, stream)
 	obj.inspect()
 
 	return &out, nil
@@ -241,8 +256,8 @@ func (t ClientInfoST) Now() time.Time {
 }
 
 // return 1 if removed, return 0 if not removed.
-func (obj *ClientInfoMapST) streamClosed(cid string, reason string, err error) int {
-	fmt.Println("streamClosed", reason, cid)
+func (obj *ClientInfoMapST) removeClient(cid string, reason string, err error) int {
+	fmt.Println("removeClient", reason, cid)
 
 	obj.mutex.Lock()
 	defer obj.mutex.Unlock()
@@ -251,7 +266,7 @@ func (obj *ClientInfoMapST) streamClosed(cid string, reason string, err error) i
 	if !exist {
 		return 0
 	}
-	fmt.Println("streamClosed", cid, reason, err)
+	fmt.Println("removeClient", cid, reason, err)
 	delete(obj.ClientInfoMap, cid)
 	return 1
 }
@@ -282,7 +297,7 @@ func (obj *ClientInfoMapST) removeStaleClients() {
 
 	if len(expired) > 0 {
 		for _, cid := range expired {
-			obj.streamClosed(cid, "expired stream", nil)
+			obj.removeClient(cid, "expired stream", nil)
 		}
 		fmt.Println("removed Stale Clients:", len(expired), len(obj.ClientInfoMap))
 	}
