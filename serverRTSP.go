@@ -139,7 +139,7 @@ func RTSPServer() {
 			"func":   "RTSPServer",
 			"call":   "Listen",
 		}).Errorln(err)
-		fmt.Println("Listen on port failed", Storage.ServerRTSPPort(), err)
+		fmt.Println("Fatal Error: Listen on port failed", Storage.ServerRTSPPort(), err)
 		os.Exit(1)
 	}
 	defer func() {
@@ -160,6 +160,7 @@ func RTSPServer() {
 				"func":   "RTSPServer",
 				"call":   "Accept",
 			}).Errorln(err)
+			fmt.Println("Fatal Error: rtspServer Accept failed", err)
 			os.Exit(1)
 		}
 		go RTSPServerClientHandle(conn)
