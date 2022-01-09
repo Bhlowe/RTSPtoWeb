@@ -26,8 +26,8 @@
     startPlay();
   });
   function startPlay(){
-	let uuid = 'tower';
-	let channel = '0';
+    let uuid=$('#uuid').val();
+    let channel=$('#channel').val();
 	let cid = Math.random();
     let url ='/stream/' + uuid + '/channel/'+channel+'/hls/live/index.m3u8?cid='+cid;
     if ($("#videoPlayer")[0].canPlayType('application/vnd.apple.mpegurl')) {

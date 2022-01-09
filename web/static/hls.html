@@ -31,12 +31,12 @@
 
 
     function startPlay() {
-        let uuid = 'tower';
+
         let cid = '' + Math.random();
-
-
-        let channel = '0';	// $('#channel').val();
+        let uuid=$('#uuid').val();
+        let channel=$('#channel').val();
         let url = '/stream/' + uuid + '/channel/' + channel + '/hls/live/index.m3u8?cid=' + cid;
+
         if ($("#videoPlayer")[0].canPlayType('application/vnd.apple.mpegurl')) {
             $("#videoPlayer")[0].src = url;
             $("#videoPlayer")[0].load();
