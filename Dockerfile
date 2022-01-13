@@ -1,8 +1,9 @@
 # Dockerfile for RTSPtoWeb. Use host mode to expose to WAN.
 # Build: docker build -t rtsptoweb .
-# Run in host mode: docker run -d --network host rtsptoweb
+# Run in host mode: docker run -d --network host --name rtsptoweb --restart unless-stopped rtsptoweb
 # Run in contained mode: docker run -d -p 8083:8083 rtsptoweb
 # (change -d to -it for interactive mode)
+# TODO: Get list of all possible tcp/udp ports that are used by RTSPtoWeb to avoid host mode.
 
 FROM golang:alpine
 
@@ -24,7 +25,6 @@ WORKDIR /build/RTSPtoWeb
 # Build executable
 RUN go build
 
-
 WORKDIR /dist
 
 RUN cp -r /build/RTSPtoWeb/web . && cp /build/RTSPtoWeb/RTSPtoWeb .
@@ -42,4 +42,8 @@ EXPOSE 8083
 # Expose config dir
 VOLUME /dist/config
 
+# delete build if you want...
+#RUN rm -rf /build
+
 CMD ["./RTSPtoWeb", "-config", "config/config.json"]
+
