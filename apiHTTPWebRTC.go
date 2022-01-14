@@ -48,7 +48,10 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		return
 	}
 
-	muxerWebRTC := webrtc.NewMuxer(webrtc.Options{})
+	opts := webrtc.Options{PortMin: 10000, PortMax: 40000}
+	// foo = webrtc.Options{}
+
+	muxerWebRTC := webrtc.NewMuxer(opts)
 	answer, err := muxerWebRTC.WriteHeader(codecs, c.PostForm("data"))
 	if err != nil {
 		c.IndentedJSON(400, Message{Status: 0, Payload: err.Error()})
